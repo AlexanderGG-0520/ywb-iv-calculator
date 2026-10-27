@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: ghcr.io/alexandergg-0520/ywb-iv-calculator:main
+          image: ghcr.io/alexandergg-0520/ywb-iv-calculator:defb713822a8a38edd491ec5167b75eaaaec5263
           ports:
             - name: http
               containerPort: 80
@@ -44,7 +44,7 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
         - name: mcp
-          image: ghcr.io/alexandergg-0520/ywb-iv-calculator-mcp:main
+          image: ghcr.io/alexandergg-0520/ywb-iv-calculator-mcp:defb713822a8a38edd491ec5167b75eaaaec5263
           ports:
             - name: mcp
               containerPort: 3001
