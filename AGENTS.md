@@ -1,5 +1,10 @@
 # AGENTS.md — YWB IV Calculator
-- No deployment, SSH, kubectl, Cloudflare, Docker socket use, or secret/environment-file access without a separate request.
+- Do not access clusters, use SSH/kubectl, modify live infrastructure, deploy directly, read secrets, or use a Docker socket unless separately and explicitly authorized.
+- Maintaining GitOps manifests, CI, and GHCR publishing configuration **in this repository** is allowed.
+- Keep the Argo CD Application in `infra/argocd/application.yaml` and workloads under `infra/kubernetes/`.
+- All GitOps image revisions should use immutable commit SHA tags; `:main` is bootstrap-only.
+- Publish both the web and MCP images before changing the GitOps image references; never roll out half of the pair.
+- A publish must not trigger itself again through its deployment-revision commit.
 - Maintain this as an independent Yo-kai Watch Blasters Red Cat Corps / White Dog Squad / Moon Rabbit Crew app.
 - Formula is Blasters-specific float32 and has FOUR stats, not five: HP/2+strength+spirit+defense=40.
 - Do not add speed IV, attitude EV, rank-up treasure, or Sports Club training.
