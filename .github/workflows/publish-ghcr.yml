@@ -32,7 +32,7 @@ jobs:
       - name: Test IV logic
         run: npm test
       - name: Test GitOps image updater
-        run: node --test scripts/update-gitops-image.test.mjs
+        run: node --test scripts/update-gitops-image.node-test.mjs
       - name: Build web
         run: npm run build
       - name: Build remote MCP

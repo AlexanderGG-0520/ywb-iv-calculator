@@ -45,7 +45,7 @@ The Argo CD Application is not managed by its own `infra/kubernetes` directory; 
 ```sh
 npm ci
 npm test
-node --test scripts/update-gitops-image.test.mjs
+node --test scripts/update-gitops-image.node-test.mjs
 npm run build
 npm run build:mcp
 kubectl -n argocd describe application ywb-iv-calculator

@@ -59,5 +59,20 @@ npm run sync:yokai
 本リポジトリは上記資料に基づく実装であり、**独自のゲーム実行コード解析を行ったとは主張しません**。
 本プロジェクトはゲーム公式アセット・ROM・実行コードを含みません。
 
+
+## GitOps / Argo CD
+
+既存のYW3個体値逆算器と同じ方式で、GHCRとArgo CDによる自動デプロイに対応しています。
+`main` の更新後、GitHub Actionsで **WebとMCP両方のイメージ** をビルド・公開し、成功後に
+`infra/kubernetes/app.yaml` をコミットSHAに更新します。Argo CDは `ywb-iv` namespaceへ自動同期します。
+
+- Argo CD Application: `infra/argocd/application.yaml`
+- Kubernetes Deployment・Service: `infra/kubernetes/app.yaml`
+- イメージ公開・リビジョン更新: `.github/workflows/publish-ghcr.yml`
+- 導入手順、GHCR公開設定、初回bootstrap、注意事項: [GitOps導入ガイド](docs/gitops.md)
+
+**初回だけ** GHCRの公開設定確認とArgo CD Applicationのbootstrapが必要です。
+独立したIngressやDNSはこのリポジトリに含めていません。
+
 ## ライセンス
 独自コード MIT。外部種族値の出典と注意は `THIRD_PARTY_NOTICES.md` を参照。
