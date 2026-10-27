@@ -1,0 +1,11 @@
+# AGENTS.md — YWB IV Calculator
+- No deployment, SSH, kubectl, Cloudflare, Docker socket use, or secret/environment-file access without a separate request.
+- Maintain this as an independent Yo-kai Watch Blasters Red Cat Corps / White Dog Squad / Moon Rabbit Crew app.
+- Formula is Blasters-specific float32 and has FOUR stats, not five: HP/2+strength+spirit+defense=40.
+- Do not add speed IV, attitude EV, rank-up treasure, or Sports Club training.
+- Keep equipment outside the playable raw-stat clamp and bound visible output to minimum 1.
+- All random recruit IVs have 40 allocation points, HP counts as two in the stored stat. Some rewards have a fixed 20/10/10/10 layout.
+- The published Moon Rabbit Crew stat table includes boss entries; exclude boss encounter stat rows. Do not use encounter stats as species baselines.
+- Reverse search must report candidate count and ambiguity honestly; level 1 is never exact.
+- Tests and build are required before merge. Respect source notes and license.
+- No ROMs, save files, game executables, or official game assets.
