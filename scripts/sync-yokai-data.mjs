@@ -3,13 +3,13 @@ const SOURCE_URL="https://togenyanweb.appspot.com/Yokai/ywb/yokaiList_getto.html
 const OUTPUT=new URL("../src/engine/yokaiData.generated.ts",import.meta.url);
 const fallback=process.argv.includes("--allow-fallback");
 const decode=s=>s.replace(/<[^>]*>/g,"").replace(/&amp;/g,"&").replace(/&nbsp;/g," ").trim();
-const cells=s=>[...s.matchAll(/<(?:th|td)\b[^>]*>([\s\\S]*?)<\/(?:th|td)>/gi)].map(m=>decode(m[1]));
+const cells=s=>[...s.matchAll(/<(?:th|td)\b[^>]*>([\s\S]*?)<\/(?:th|td)>/gi)].map(m=>decode(m[1]));
 async function main(){
  try{
   const response=await fetch(SOURCE_URL);
   if(!response.ok)throw Error("HTTP "+response.status);
   const html=await response.text(),rows=[];
-  for(const m of html.matchAll(/<tr\b[^>]*>([\s\\S]*?)<\/tr>/gi)){
+  for(const m of html.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)){
    const c=cells(m[1]),number=Number(c[0]);
    if(!Number.isInteger(number)||number<1||c.length<10)continue;
    const v=c.slice(2,10).map(Number);
