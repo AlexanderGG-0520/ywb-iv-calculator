@@ -10,7 +10,7 @@ const startLevel=50;
 const startObserved=calculateStats(initial,startLevel,startIv);
 type Mode="reverse"|"forward";
 function NumberField(props:{value:number,onChange:(n:number)=>void,min?:number,max?:number,step?:number,ariaLabel:string}) {
- return <input type="number" value={props.value} min={props.min} max={props.max} step={props.step??1}
+ return <input type="number" value={Number.isFinite(props.value)?props.value:""} min={props.min} max={props.max} step={props.step??1}
   aria-label={props.ariaLabel} onChange={e=>props.onChange(e.currentTarget.value==="" ? NaN : Number(e.currentTarget.value))}/>;
 }
 export default function App(){
